@@ -1,10 +1,6 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
-
-import NotFound from './pages/NotFound';
 
 import RootLayout, {menuItems} from './layout/RootLayout'
 import SimpleLayout from './layout/SimpleLayout'
@@ -23,7 +19,7 @@ function App() {
           </Routes>
 
           <SimpleLayout>
-              <p>content</p>
+              <p></p>
           </SimpleLayout>
       </RootLayout>
     </>

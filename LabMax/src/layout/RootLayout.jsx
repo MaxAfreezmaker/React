@@ -9,7 +9,7 @@ import Lab2 from '../pages/Lab2';
 const menuItems = [
   { id: 1, label: 'Home', urlPattern: '/home', element: <Home /> },
   { id: 2, label: 'Lab1', urlPattern: '/lab1', element: <Lab1 /> },
-  { id: 3, label: 'Lab2', urlPattern: '/lab2', element: <Lab2 /> }
+  { id: 3, label: 'Lab2', urlPattern: '/lab2/', element: <Lab2 /> }
 ];
 
 function RootLayout({ children }) {
