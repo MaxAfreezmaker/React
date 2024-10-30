@@ -34,11 +34,11 @@ fs.readFile('./names.txt', 'utf8', (err, data) => {
         content += "];";
 
       
-        fs.writeFile('module-data.js', content, (err) => {
+        fs.writeFile('src/components/module-data.js', content, (err) => {
             if (err) {
                 console.error(err);
             }
-            console.log("module-data.js generated");
+            console.log("src/components/module-data.js generated");
         });
     });
 });
