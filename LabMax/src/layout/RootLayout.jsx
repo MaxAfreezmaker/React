@@ -4,12 +4,14 @@ import Footer from '../components/Footer';
 import Home from '../pages/Home';
 import Lab1 from '../pages/Lab1';
 import Lab2 from '../pages/Lab2';
+import Lab3 from '../pages/Lab3';
 
 
 const menuItems = [
   { id: 1, label: 'Home', urlPattern: '/home', element: <Home /> },
   { id: 2, label: 'Lab1', urlPattern: '/lab1', element: <Lab1 /> },
-  { id: 3, label: 'Lab2', urlPattern: '/lab2/', element: <Lab2 /> }
+  { id: 3, label: 'Lab2', urlPattern: '/lab2/', element: <Lab2 /> },
+  { id: 4, label: 'Lab3', urlPattern: '/lab3/', element:<Lab3/>}
 ];
 
 function RootLayout({ children }) {

@@ -27,8 +27,9 @@ fs.readFile('./names.txt', 'utf8', (err, data) => {
             const randomName = names[~~(Math.random() * names.length)];
             const randomBirth = birth[~~(Math.random() * birth.length)];
             const randomEyeColor = eyesColors[~~(Math.random() * eyesColors.length)];
+            let randomRating = Math.floor(Math.random() * 11);
+            content += `  {\n    id: ${i + 1},\n    name: "${names[i]}",\n    birth: "${randomBirth}",\n    eyes: "${randomEyeColor}",\n    rating: ${randomRating}\n  },\n`;   
             
-            content += `  {\n    id: ${i + 1},\n    name: "${names[i]}",\n    birth: "${randomBirth}",\n    eyes: "${randomEyeColor}"\n  },\n`;
         }
 
         content += "];";
