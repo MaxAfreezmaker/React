@@ -2,9 +2,13 @@ import { useReducer } from 'react';
 import { data } from '../components/module-data';
 import PersonInfo from '../components/PersonInfo';
 import AppReducer from '../components/AppReducer';
+import { useContext } from 'react';
+import AppContext from '../data/AppContext';
+
+
 
 const Lab3 = () => {
-  const [state, dispatch] = useReducer(AppReducer, data);
+  const [state, dispatch, appDispatch] = useReducer(AppReducer);
 
   console.log("Current state after action:", JSON.stringify(state, null, 2));
 
@@ -12,7 +16,7 @@ const Lab3 = () => {
     <div className="container mt-4">
       <h1>Lab 3</h1>
       <div className="d-flex flex-wrap">
-        {/* Bezpośrednie renderowanie listy osób */}
+        
         {state.map((person) => (
           <PersonInfo
             key={person.id}

@@ -2,6 +2,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import RatingBar from './RatingBar';
+import AppReducer from '../data/AppReducer';
+import { redirect } from 'react-router-dom';
 
 function PersonInfo({ id, name, birth, eyes, rating, dispatch }) {
   const handleDetails = () => {
@@ -11,20 +13,24 @@ function PersonInfo({ id, name, birth, eyes, rating, dispatch }) {
   const handleEdit = () => {
     const newName = prompt("Enter new name:", name);
     if (newName && newName !== name) {
-      console.log("Dispatching edit action"); // Debugowanie
+      console.log("Dispatching edit action");
       dispatch({ type: "edit", id: id, newName: newName });
     }
   };
 
   const handleDelete = () => {
-    console.log("Dispatching delete action"); // Debugowanie
+    console.log("Dispatching delete action");
     dispatch({ type: "delete", id: id });
   };
 
   const handleRateChange = (newRating) => {
-    console.log("Dispatching rate action", newRating); // Debugowanie
+    console.log("Dispatching rate action", newRating);
     dispatch({ type: "rate", id: id, rating: newRating });
   };
+
+  function ProfileInfo({ name, id, rating }) {
+    const context = useContext(AppContext);
+    const dispatch = context.dispatch;
 
   return (
     <Card style={{ width: '18rem' }}>
@@ -46,6 +52,7 @@ function PersonInfo({ id, name, birth, eyes, rating, dispatch }) {
       </Card.Body>
     </Card>
   );
+}
 }
 
 export default PersonInfo;

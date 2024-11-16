@@ -4,10 +4,11 @@ import PersonInfo from '../components/PersonalInfo';
 import AppReducer from '../data/AppReducer';
 
 const Lab3 = () => {
-  const [state, dispatch] = useReducer(AppReducer, data);
+  const [state, dispatch, appDispatch] = useReducer(AppReducer, data);
   const [updateKey, setUpdateKey] = useState(0);
+ 
 
-  // Wymuszamy ponowne renderowanie po każdej zmianie stanu
+  
   useEffect(() => {
     setUpdateKey((prevKey) => prevKey + 1);
   }, [state]);
@@ -20,7 +21,7 @@ const Lab3 = () => {
       <div className="d-flex flex-wrap">
         {state.map((person) => (
           <PersonInfo
-            key={`${person.id}-${updateKey}`} // Dynamiczny klucz wymuszający renderowanie
+            key={`${person.id}-${updateKey}`}
             id={person.id}
             name={person.name}
             birth={person.birth}
