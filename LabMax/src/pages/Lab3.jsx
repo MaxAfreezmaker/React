@@ -1,38 +1,35 @@
-import { useReducer, useEffect, useState } from 'react';
-import { data } from '../components/module-data';
+import { useContext, useState, useEffect } from 'react';
+import AppContext from '../data/AppContext';
 import PersonInfo from '../components/PersonalInfo';
-import AppReducer from '../data/AppReducer';
 
 const Lab3 = () => {
-  const [state, dispatch, appDispatch] = useReducer(AppReducer, data);
-  const [updateKey, setUpdateKey] = useState(0);
- 
+    const { items, dispatch } = useContext(AppContext);
+    const [updateKey, setUpdateKey] = useState(0);
 
-  
-  useEffect(() => {
-    setUpdateKey((prevKey) => prevKey + 1);
-  }, [state]);
+    useEffect(() => {
+        setUpdateKey((prevKey) => prevKey + 1);
+    }, [items]);
 
-  console.log("Current state after action:", JSON.stringify(state, null, 2));
+    console.log("Current state after action:", JSON.stringify(items, null, 2));
 
-  return (
-    <div className="container mt-4">
-      <h1>Lab 3</h1>
-      <div className="d-flex flex-wrap">
-        {state.map((person) => (
-          <PersonInfo
-            key={`${person.id}-${updateKey}`}
-            id={person.id}
-            name={person.name}
-            birth={person.birth}
-            eyes={person.eyes}
-            rating={person.rating}
-            dispatch={dispatch}
-          />
-        ))}
-      </div>
-    </div>
-  );
+    return (
+        <div className="container mt-4">
+            <h1>Lab 3</h1>
+            <div className="d-flex flex-wrap">
+                {items.map((person) => (
+                    <PersonInfo
+                        key={`${person.id}-${updateKey}`}
+                        id={person.id}
+                        name={person.name}
+                        birth={person.birth}
+                        eyes={person.eyes}
+                        rating={person.rating}
+                        dispatch={dispatch}
+                    />
+                ))}
+            </div>
+        </div>
+    );
 };
 
 export default Lab3;

@@ -1,53 +1,49 @@
-import { useContext, useState } from "react"
+import { useContext, useState } from "react";
 import AppContext from "../data/AppContext";
 
-
-
-function CreateForm(){
+function CreateForm() {
     const [errors, setErrors] = useState([]);
     const [isSending, setSending] = useState(false);
     const dispatch = useContext(AppContext).dispatch;
-    const err = []
-    const onSubmit = async e =>{
+
+    const onSubmit = async (e) => {
         e.preventDefault();
         const data = new FormData(e.target);
 
         const title = data.get("title");
-        if(title.slice(0,1) !== title.slice(0,1).toUpperCase()){
-            err.push([...errors,"Tytuł 1 zadania musi być z wielkiej litery!"])
-        }
-        // if{
-
-        // }
-        if(errors.length !=0){
+        if (title.slice(0, 1) !== title.slice(0, 1).toUpperCase()) {
+            setErrors(["Tytuł musi zaczynać się wielką literą!"]);
             return;
         }
-        console.log(errors)
-            setErrors([]);
+
+        setErrors([]);
         setSending(true);
-        await new Promise(res => setTimeout(res, 1000));
+        await new Promise((res) => setTimeout(res, 1000));
+
         dispatch({
-            type:"add",
-            data:{}
-        })
+            type: "add",
+            data: {
+                id: Date.now(),
+                title,
+                birth: "Unknown",
+                eyes: "Unknown",
+                rating: 0, // Domyślna wartość
+            },
+        });
+
         setSending(false);
-        for(let key of data.keys()){
-            e.target[key].value = "";
-        }
-    }
+        e.target.reset();
+    };
 
     return (
-        <>
-        {errors.map(e=><span>{e}</span>)}
-            <form onSubmit={onSubmit}>
-
-                <label htmlFor="title">Tytuł zadania</label>
-                <input name="title" required minLength="3" maxLength="20"/>
-                <button type="submit"></button>
-                
-                </form>    
-        </>
-    )
+        <form onSubmit={onSubmit}>
+            {errors.map((error, index) => (
+                <p key={index} style={{ color: "red" }}>{error}</p>
+            ))}
+            <input type="text" name="title" placeholder="Title" required />
+            <button type="submit" disabled={isSending}>Add</button>
+        </form>
+    );
 }
 
-export default CreateForm; 
+export default CreateForm;

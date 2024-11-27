@@ -7,10 +7,11 @@ import SimpleLayout from './layout/SimpleLayout'
 import { Routes, Route } from 'react-router-dom'
 import AppContext from './data/AppContext'
 import AppReducer from './data/AppReducer'
+import { data } from './components/module-data'
 
 function App() {
   const [count, setCount] = useState(0)
-  const [state, appDispatch] = useReducer(AppReducer)
+  const [state, appDispatch] = useReducer(AppReducer, data)
 
   return (
     <>
