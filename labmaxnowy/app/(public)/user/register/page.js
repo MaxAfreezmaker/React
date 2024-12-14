@@ -1,7 +1,6 @@
-function Register(){
-    return(
-        <h1>Register</h1>
+function RegisterForm() {
+    return (
+        <h1>RegisterForm</h1>
     )
 }
-
-export default Register
+export default RegisterForm

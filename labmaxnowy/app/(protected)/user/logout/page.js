@@ -1,7 +1,6 @@
-function Logout(){
-    return(
-        <h1>Logout</h1>
+function LogoutForm() {
+    return (
+        <h1>LogoutForm</h1>
     )
 }
-
-export default Logout
+export default LogoutForm

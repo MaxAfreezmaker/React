@@ -1,7 +1,6 @@
-function Profile(){
-    return(
-        <h1>Profile</h1>
+function UserPage() {
+    return (
+        <h1>UserPage</h1>
     )
 }
-
-export default Profile
+export default UserPage
