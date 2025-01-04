@@ -1,1 +1,0 @@
-const data = [{ name: "Ala", id: 1, rating: 3 }, { name: "Ela", id: 2, rating: 1 }, { name: "Karol", id: 3, rating: 0 }, { name: "Ola", id: 4, rating: 0, }, { name: "Monik", id: 5, rating: 2, }, { name: "Robert", id: 6, rating: 5 }]; export default data;

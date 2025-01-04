@@ -1,5 +1,6 @@
+import { AuthProvider } from "@/app/lib/AuthContext"; // Import AuthProvider
 import localFont from "next/font/local";
-import "./globals.css";
+import "/app/globals.css";
 import Footer from "./components/Footer";
 import SideBar from "./components/SideBar";
 
@@ -25,8 +26,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SideBar>{children}</SideBar>
-        <Footer></Footer>
+        <AuthProvider> 
+          <SideBar>{children}</SideBar>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
