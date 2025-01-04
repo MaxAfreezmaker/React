@@ -1,6 +1,10 @@
+
 import Link from "next/link";
+import { useAuth } from "../lib/AuthContext";
+import { auth } from "../lib/firebase";
 
 function SideBar({children}) {
+  const {user} = useAuth
     return (  
         <>
         <div className="drawer lg:drawer-open">

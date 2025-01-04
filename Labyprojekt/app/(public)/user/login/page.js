@@ -1,4 +1,29 @@
+'use client'
+import { useForm } from "react-hook-form";
+import { auth ,browserSessionPersistence, setPersistence } from 'firebase/auth';
+
 function LoginForm() {
+
+const {
+  register,
+  handleSubmit,
+  watch,
+  formState:{ errors }
+} = useForm();
+
+const onSubmit = data =>{
+  setPersistence(auth, browserSessionPersistence)
+  .then(()=>{
+
+  
+  signInWithEmailAndPassword(auth, data.email, data.password)
+  .then((userCredencial =>{
+    console.log("User Logged!");
+    // to do logika logowania
+  }))
+});
+}
+
   return (
 
 <section className="bg-white">
@@ -38,28 +63,52 @@ function LoginForm() {
         Brum brum
       </p>
 
-      <form action="#" className="mt-8 grid grid-cols-6 gap-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="mt-8 grid grid-cols-6 gap-6">
 
         <div className="col-span-6">
           <label htmlFor="Email" className="block text-sm font-medium text-gray-700"> Podaj Adres mailowy </label>
 
           <input
+          {... register("email",{
+            required:{
+              value:true,
+              message:"Musisz wpisać adres mailowy"
+            },
+            pattern:{
+              value:/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+              message: "Adres email ma niepoprawny format"
+            }
+          })}
             type="email"
             id="Email"
             name="email"
             className="mt-1 w-full rounded-md border-gray-200 bg-white text-lg text-gray-700 shadow-sm"
           />
+          <p className="text-red-700 mt-3">{errors.email?.message}</p>
         </div>
 
         <div className="col-span-6 ">
           <label htmlFor="Password" className="block text-sm font-medium text-gray-700"> Wprowadź hasło </label>
 
           <input
+          {... register("password",{
+            required:{
+              value:true,
+              message:"Podaj hasło"
+            },
+            pattern:{
+              minLenght:{
+                value: 6,
+                message:"Zbyt krótkie hasło"
+              }
+            }
+          })}
             type="password"
             id="Password"
             name="password"
             className="mt-1 w-full rounded-md border-gray-200 bg-white text-lg text-gray-700 shadow-sm"
           />
+           <p className="text-red-700 mt-3">{errors.password?.message}</p>
         </div>
 
         <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
