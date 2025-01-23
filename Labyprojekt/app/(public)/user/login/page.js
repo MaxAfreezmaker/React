@@ -1,5 +1,5 @@
 'use client';
-import { useState } from "react"; // Import useState
+import { useState } from "react"; 
 import { useForm } from "react-hook-form";
 import { 
   browserSessionPersistence, 
@@ -16,12 +16,12 @@ function LoginForm() {
     formState: { errors } 
   } = useForm();
 
-  const [errorMessage, setErrorMessage] = useState(""); // Dodano stan dla errorMessage
+  const [errorMessage, setErrorMessage] = useState(""); 
   const router = useRouter();
 
   const onSubmit = async (data) => {
     try {
-      // Resetuj komunikat błędu przed nową próbą
+     
       setErrorMessage("");
       await setPersistence(auth, browserSessionPersistence);
       const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
@@ -31,7 +31,7 @@ function LoginForm() {
     } catch (error) {
       console.error("Login error:", error.message);
       console.error("Błąd logowania:", error.message);
-      setErrorMessage("Nieprawidłowy email lub hasło. Spróbuj ponownie."); // Ustaw komunikat błędu
+      setErrorMessage("Nieprawidłowy email lub hasło. Spróbuj ponownie.");
     }
   };
 
@@ -52,7 +52,6 @@ function LoginForm() {
               Zaloguj się na konto 😀
             </h1>
 
-            {/* Wyświetlanie błędu */}
             {errorMessage && (
               <div className="mt-4 text-red-600 bg-red-100 p-4 rounded">
                 {errorMessage}

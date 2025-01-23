@@ -54,6 +54,12 @@ function SideBar({ children }) {
                 <Link href="/user/profile">Profil</Link>
               </li>
               <li>
+                <Link href="/user/changepassword">Zmiana hasła</Link>
+              </li>
+              <li>
+                <Link href="/user/cars">Pojazdy</Link>
+              </li>
+              <li>
                 <button className="btn btn-error" onClick={() => auth.signOut()}>
                   Logout
                 </button>

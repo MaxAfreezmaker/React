@@ -1,25 +1,37 @@
 'use client';
 import { useForm } from 'react-hook-form';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '@/app/lib/firebase'; // Upewnij się, że ścieżka jest poprawna
+import { auth } from '@/app/lib/firebase'; 
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 function RegisterForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const router = useRouter();
 
   const onSubmit = async (data) => {
     try {
       setErrorMessage('');
       setSuccessMessage('');
       const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
+      const user = userCredential.user;
       console.log('User Registered:', userCredential.user);
       setSuccessMessage('Rejestracja zakończona sukcesem! Możesz się teraz zalogować.');
+      sendEmailVerification(user)
+        .then(() => {
+          console.log('Verification email sent');
+        })
+        .catch((error) => {
+          console.error('Verification email error:', error);
+        });
+        router.push('/user/verify');
     } catch (error) {
       console.error('Registration error:', error.message);
       setErrorMessage('Rejestracja nie powiodła się: ' + error.message);
     }
+    
   };
 
   return (
@@ -39,8 +51,6 @@ function RegisterForm() {
               Zarejestruj się już teraz!
             </h1>
             <p className="mt-4 leading-relaxed text-gray-500">Brum brum</p>
-
-            {/* Komunikaty o błędach i sukcesach */}
             {successMessage && (
               <div className="mt-4 text-green-600 bg-green-100 p-4 rounded">
                 {successMessage}

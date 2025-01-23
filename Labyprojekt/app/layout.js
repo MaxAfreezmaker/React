@@ -1,14 +1,16 @@
-import { AuthProvider } from "@/app/lib/AuthContext"; // Import AuthProvider
 import localFont from "next/font/local";
 import "/app/globals.css";
 import Footer from "./components/Footer";
 import SideBar from "./components/SideBar";
+import UserBadge from "./components/UserBadge";
+import { AuthProvider } from "./lib/AuthContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -24,11 +26,26 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <AuthProvider> 
-          <SideBar>{children}</SideBar>
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100 text-gray-900`}
+      ><AuthProvider>
+        <div className="flex flex-col min-h-screen">
+          
+          <header className="flex justify-between items-center bg-gray-800 p-4">
+            <div className="text-white text-lg font-bold">APP</div>
+            <UserBadge />
+          </header>
+
+          
+          <div className="flex flex-1">
+          <aside className="w-1/7 bg-gray-900 p-4 text-white">
+              <SideBar />
+            </aside>
+            <main className="flex-1 p-6 bg-gray-400">{children}</main>
+          </div>
+
+          
           <Footer />
+        </div>
         </AuthProvider>
       </body>
     </html>
