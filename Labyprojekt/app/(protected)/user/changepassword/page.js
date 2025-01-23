@@ -93,7 +93,7 @@ export default function ChangePassword() {
                         id="currentPassword"
                         value={currentPassword}
                         onChange={(e) => setCurrentPassword(e.target.value)}
-                        className={`mt-1 block w-full rounded-md shadow-sm border ${
+                        className={`mt-1 block w-full rounded-md shadow-sm border bg-gray-100 ${
                             currentPasswordError ? 'border-red-500 ring-red-500 focus:ring-red-500' : 'border-gray-300 ring-blue-500 focus:ring-blue-500'
                           }`}
                         required
@@ -109,7 +109,7 @@ export default function ChangePassword() {
                         id="newPassword"
                         value={newPassword}
                         onChange={(e) => setNewPassword(e.target.value)}
-                        className={`mt-1 block w-full rounded-md shadow-sm border ${
+                        className={`mt-1 block w-full rounded-md shadow-sm border bg-gray-100 ${
                             newPasswordError ? 'border-red-500 ring-red-500 focus:ring-red-500' : 'border-gray-300 ring-blue-500 focus:ring-blue-500'
                           }`}
                         required
@@ -125,7 +125,7 @@ export default function ChangePassword() {
                         id="confirmPassword"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className={`mt-1 block w-full rounded-md shadow-sm border ${
+                        className={`mt-1 block w-full rounded-md shadow-sm border bg-gray-100 ${
                             confirmPasswordError ? 'border-red-500 ring-red-500 focus:ring-red-500' : 'border-gray-300 ring-blue-500 focus:ring-blue-500'
                           }`}
                         required

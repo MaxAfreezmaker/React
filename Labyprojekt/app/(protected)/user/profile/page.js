@@ -47,7 +47,7 @@ export default function ProfilePage() {
             id="displayName"
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
-            className="mt-1 block w-full rounded-md shadow-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full rounded-md shadow-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500 bg-gray-100" 
           />
         </div>
 
@@ -60,7 +60,7 @@ export default function ProfilePage() {
             id="email"
             value={user?.email || ''}
             readOnly
-            className="mt-1 block w-full rounded-md shadow-sm bg-gray-100 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full rounded-md shadow-sm bg-gray-100 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 bg-gray-100" 
           />
         </div>
 
@@ -73,7 +73,7 @@ export default function ProfilePage() {
             id="photoURL"
             value={photoURL}
             onChange={(e) => setPhotoURL(e.target.value)}
-            className="mt-1 block w-full rounded-md shadow-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full rounded-md shadow-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500 bg-gray-100"
           />
         </div>
 

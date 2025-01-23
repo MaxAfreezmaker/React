@@ -111,7 +111,7 @@ export default function CarsPage() {
       {!showForm && (
         <button
           onClick={() => setShowForm(true)}
-          className="mb-4 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700" name="Dodaj"
+          className="mb-4 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 " name="Dodaj"
         >
           Dodaj auto
         </button>
@@ -129,7 +129,7 @@ export default function CarsPage() {
               id="make"
               value={newCar.make}
               onChange={(e) => setNewCar({ ...newCar, make: e.target.value })}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100"
               required
             />
           </div>
@@ -141,7 +141,7 @@ export default function CarsPage() {
               id="model"
               value={newCar.model}
               onChange={(e) => setNewCar({ ...newCar, model: e.target.value })}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100"
               required
             />
           </div>
@@ -154,7 +154,7 @@ export default function CarsPage() {
               type="number"
               value={newCar.year}
               onChange={(e) => setNewCar({ ...newCar, year: e.target.value })}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100"
               required
             />
           </div>
@@ -167,7 +167,7 @@ export default function CarsPage() {
               type="number"
               value={newCar.mileage}
               onChange={(e) => setNewCar({ ...newCar, mileage: e.target.value })}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-100"
               required
             />
           </div>
